@@ -302,9 +302,7 @@ def atanh(x):
 
 
 def deriv(func, x):
-    # Возвращает значение производной функции func в точке x
+    # Возвращает значение производной функции func в вещественной точке x
     if isinstance(x, int) or isinstance(x, float) or isinstance(x, Dual_number) and x.im == 0:
         return func(x + eps).im
-    elif isinstance(x, Dual_number):
-        return (func(x) - func(x.re)) / (x.im * eps)
     raise TypeError("Неправильный тип аргумента функции")
