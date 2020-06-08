@@ -1,6 +1,9 @@
 import numpy as np
 from scipy.optimize import curve_fit
 
-A = np.array([[1], [2], [3]])
-B = A
-print(B)
+a = np.random.uniform(-1, 1, (2, 3))
+b = np.zeros(3)
+
+for i in range(2):
+    b[i] += a[i, :] ** 2
+print(b)
