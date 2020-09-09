@@ -1,0 +1,64 @@
+\documentclass[10pt]{article}
+\usepackage{amssymb}
+\usepackage{graphicx,amsmath}
+  \usepackage[utf8]{inputenc}
+  \usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\textwidth 16.5cm \oddsidemargin 0.5cm \textheight 21cm \topmargin
+1cm
+
+\begin{document}
+
+\begin{enumerate}
+\item Вспомните \href{https://github.com/ev-br/CP2020/blob/master/week_0_recurrence.ipynb}{разобранный на семинаре пример}. Теперь рассмотрите интеграл $I_n(\alpha) = \int_0^1 \frac{x^n}{x+\alpha} dx$ и получите i) рекуррентное соотношение, связывающее $I_{n}$ c $I_{n-1}$ и ii) явное выражение для $I_0(\alpha)$. Вычислите (прямой и обратной) рекурсией значения $I_{25}(0.1)$ и $I_{25}(10)$. Обсудите результат.
+\item \href{https://github.com/ev-br/CP2020/blob/master/week_1_quadratic.ipynb}{Реализуйте функцию, возвращающую пару решений квадратного уравнения} (следуйте инструкциям по ссылке).
+\item Рассмотрите следующую функцию:
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{label={lst:code_direct}}
+\lstset{basicstyle=\ttfamily}
+\begin{lstlisting}
+def recur(n):
+    if n == 0:
+        return 1
+    if n == 1:
+        return -3
+    return -recur(n-1) + 6*recur(n-2)
+\end{lstlisting}
+
+Чему будет равен результат вызова `recur(2018)'? Диапазон определения целых чисел считать неограниченным (т.е., целые числа не переполняются), размер стека также считать неограниченным (т.е. максимальное число рекурсивных вызовов не ограничено).
+\item Рассмотрите (считая $\delta>0$) матрицу $A=\begin{pmatrix}
+1 & 10 \\
+\delta &1 
+\end{pmatrix}$. Пусть $\epsilon(\delta)$ -- наибольшее собственное значение $A$. Найдите число обусловленности этого собственного значения $\kappa(\delta)=\frac{d\epsilon(\delta)}{d\delta}$ для $\delta=10$ и $\delta=0.1$.
+
+\item Убедитесь, что функция
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{label={lst:code_direct}}
+\lstset{basicstyle=\ttfamily}
+\begin{lstlisting}
+import math
+def round_to_n(x, n): 
+    if x == 0:
+        return x
+    else:
+        return round(x, -int(math.floor(math.log10(abs(x)))) + (n - 1))
+\end{lstlisting}
+округляет $x$ до $n$ значащих цифр.
+Программа, вычисляющая $\sum_{k=1}^{3000}k^{-2}\approx 1.6446$ последовательным суммированием членов ряда с округлением промежуточных результатов до 4х знаков выглядит следующим образом:
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{label={lst:code_direct}}
+\lstset{basicstyle=\ttfamily}
+\begin{lstlisting}
+res = 0
+for k in range(1,3001):
+    res = round_to_n(res+1/k**2, 4)
+\end{lstlisting}
+Несмотря на отсутствие вычитаний (и связанных с ними сокращений), такой код позволяет получить только две значащие цифры точного ответа. Объясните, почему так происходит и предложите более удачный способ вычисления этой суммы (ограничиваясь 4мя значащими цифрами для промежуточных результатов).
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,8 @@
+# TeX intermediaries
+
+*aux
+*log
+*out
+
+# IPython stuff
+.ipynb_checkpoints
