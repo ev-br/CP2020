@@ -1,0 +1,62 @@
+\documentclass[10pt]{article}
+\usepackage{amssymb}
+\usepackage{graphicx,amsmath}
+  \usepackage[utf8]{inputenc}
+  \usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\textwidth 16.5cm \oddsidemargin 0.5cm \textheight 21cm \topmargin
+1cm
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\begin{document}
+
+\begin{enumerate}
+\item \textbf{(7)} Докажите следующие неравенства и приведите примеры вектора $x$ и матрицы $A$, при которых эти неравенства достигаются:
+\begin{itemize}
+\item $\norm{x}_2 \le \sqrt{m}\norm{x}_\infty$
+\item $\norm{A}_\infty \le \sqrt{n} \norm{A}_2$
+\end{itemize}
+где $x$ -- вектор длины $m$ и $A$ -- матрица размера $m\times n$.
+
+\item \textbf{(10)} Постройте руками SVD разложение следующих матриц:
+$$
+(a)\quad\begin{bmatrix}
+3 & 0\\
+0 & -2
+\end{bmatrix},\quad
+(b)\quad\begin{bmatrix}
+0 & 2\\
+0 & 0\\
+0 & 0
+\end{bmatrix},\quad
+(c)\quad\begin{bmatrix}
+1 & 1\\
+1 & 1
+\end{bmatrix}.
+$$
+
+\item \textbf{(15)} Напишите код на Python, который для данной действительной матрицы $A$ строит правые сингулярные вектора $v_1,\; v_2$ (вписанные в окружность) и  левые сингулярные вектора $u_1,\; u_2$ (вписанные в эллипс) -- аналогично Fig. 4.1 Trefethen, Bau. Используйте этот код для матриц из Задачи 2.
+
+\item \textbf{(15)} Рассмотрите матрицы $X$ размером $N\times m$, $ \Omega$ размером $m\times m$ и $ \Delta$ размером $n\times n$. Пусть $V = X \Omega X^T + \Delta$  и
+$$
+f(A) = A^{-1}X(X^T A^{-1}X)^{-1}.
+$$
+Докажите, предполагая обратимость участвующих матриц, что $f(V)=f(\Delta)$.
+
+\item \textbf{(20)} \href{https://github.com/ev-br/CP2020/blob/master/week_1_LU_pivoting.ipynb}{Реализуйте LU разложение квадратной матрицы с выбором главного элемента}, следуя инструкциям по ссылке.
+
+\item \textbf{(20)} Ознакомьтесь с \href{https://en.wikipedia.org/wiki/Woodbury_matrix_identity}{Woodbury matrix identity}, справедливом для матриц подходящих размеров:
+\begin{equation}
+\label{wb}
+\left(A+UCV\right)^{-1}=A^{-1}-A^{-1}U\left(C^{-1}+VA^{-1}U\right)^{-1}VA^{-1}.
+\end{equation}
+Рассмотрите частный случай диагональной ($p\times p$) матрицы $A$ и единичной ($k\times k$) матрицы $C$ и напишите функцию `woodbury(A, U, V)' вычисляющую $\left(A+UV\right)^{-1}$ по формуле (\ref{wb}). Проверьте, что Ваша имплементация верна, сравнивая результат с полученным прямолинейным вычислением.
+Сравните быстродействие этих двух способов: какой оказывается быстрее и почему? (рассмотрите случайные матрицы с $p = 5000, k = 100$).
+
+
+
+
+\end{enumerate}
+
+\end{document}
