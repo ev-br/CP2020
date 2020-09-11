@@ -12,9 +12,9 @@
 \begin{document}
 
 \begin{enumerate}
-\item Вспомните \href{https://github.com/ev-br/CP2020/blob/master/week_0_recurrence.ipynb}{разобранный на семинаре пример}. Теперь рассмотрите интеграл $I_n(\alpha) = \int_0^1 \frac{x^n}{x+\alpha} dx$ и получите i) рекуррентное соотношение, связывающее $I_{n}$ c $I_{n-1}$ и ii) явное выражение для $I_0(\alpha)$. Вычислите (прямой и обратной) рекурсией значения $I_{25}(0.1)$ и $I_{25}(10)$. Обсудите результат.
-\item \href{https://github.com/ev-br/CP2020/blob/master/week_1_quadratic.ipynb}{Реализуйте функцию, возвращающую пару решений квадратного уравнения} (следуйте инструкциям по ссылке).
-\item Рассмотрите следующую функцию:
+\item \textbf{(15)} Вспомните \href{https://github.com/ev-br/CP2020/blob/master/week_0_recurrence.ipynb}{разобранный на семинаре пример}. Теперь рассмотрите интеграл $I_n(\alpha) = \int_0^1 \frac{x^n}{x+\alpha} dx$ и получите i) рекуррентное соотношение, связывающее $I_{n}$ c $I_{n-1}$ и ii) явное выражение для $I_0(\alpha)$. Вычислите (прямой и обратной) рекурсией значения $I_{25}(0.1)$ и $I_{25}(10)$. Обсудите результат.
+\item \textbf{(10)} \href{https://github.com/ev-br/CP2020/blob/master/week_1_quadratic.ipynb}{Реализуйте функцию, возвращающую пару решений квадратного уравнения} (следуйте инструкциям по ссылке).
+\item \textbf{(10)} Рассмотрите следующую функцию:
 \lstset{language=Python}
 \lstset{frame=lines}
 \lstset{label={lst:code_direct}}
@@ -29,12 +29,12 @@ def recur(n):
 \end{lstlisting}
 
 Чему будет равен результат вызова `recur(2018)'? Диапазон определения целых чисел считать неограниченным (т.е., целые числа не переполняются), размер стека также считать неограниченным (т.е. максимальное число рекурсивных вызовов не ограничено).
-\item Рассмотрите (считая $\delta>0$) матрицу $A=\begin{pmatrix}
+\item \textbf{(5)} Рассмотрите (считая $\delta>0$) матрицу $A=\begin{pmatrix}
 1 & 10 \\
 \delta &1 
 \end{pmatrix}$. Пусть $\epsilon(\delta)$ -- наибольшее собственное значение $A$. Найдите число обусловленности этого собственного значения $\kappa(\delta)=\frac{d\epsilon(\delta)}{d\delta}$ для $\delta=10$ и $\delta=0.1$.
 
-\item Убедитесь, что функция
+\item \textbf{(7)} Убедитесь, что функция
 \lstset{language=Python}
 \lstset{frame=lines}
 \lstset{label={lst:code_direct}}
