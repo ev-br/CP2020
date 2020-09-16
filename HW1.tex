@@ -1,19 +1,27 @@
-\documentclass[10pt]{article}
-\usepackage{amssymb}
-\usepackage{graphicx,amsmath}
-  \usepackage[utf8]{inputenc}
-  \usepackage[russian]{babel}
+\documentclass[prb,papersize=a4paper,notitlepage]{revtex4-1}%
 \usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{nicefrac}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
 \usepackage{listings}
 
-\textwidth 16.5cm \oddsidemargin 0.5cm \textheight 21cm \topmargin
-1cm
 
 \begin{document}
 
+\title{Вычислительная физика, Осень 2020 ВШЭ. Задание 1.\footnote{Дополнительно указаны: (количество баллов за задачу)[имя задачи на nbgrader]}}
+\maketitle
+
+
 \begin{enumerate}
 \item \textbf{(15)} Вспомните \href{https://github.com/ev-br/CP2020/blob/master/week_0_recurrence.ipynb}{разобранный на семинаре пример}. Теперь рассмотрите интеграл $I_n(\alpha) = \int_0^1 \frac{x^n}{x+\alpha} dx$ и получите i) рекуррентное соотношение, связывающее $I_{n}$ c $I_{n-1}$ и ii) явное выражение для $I_0(\alpha)$. Вычислите (прямой и обратной) рекурсией значения $I_{25}(0.1)$ и $I_{25}(10)$. Обсудите результат.
-\item \textbf{(10)} \href{https://github.com/ev-br/CP2020/blob/master/week_1_quadratic.ipynb}{Реализуйте функцию, возвращающую пару решений квадратного уравнения} (следуйте инструкциям по ссылке).
+\item \textbf{(10) [Quadratic]} \href{https://github.com/ev-br/CP2020/blob/master/week_1_quadratic.ipynb}{Реализуйте функцию, возвращающую пару решений квадратного уравнения} (следуйте инструкциям по ссылке).
 \item \textbf{(10)} Рассмотрите следующую функцию:
 \lstset{language=Python}
 \lstset{frame=lines}
