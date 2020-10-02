@@ -1,0 +1,69 @@
+\documentclass[prb,papersize=a4paper,notitlepage]{revtex4-1}%
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{nicefrac}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{listings}
+
+
+\begin{document}
+
+\title{Вычислительная физика, Осень 2020 ВШЭ. Задание 4.\footnote{Дополнительно указаны: (количество баллов за задачу)[имя задачи на nbgrader]}}
+\maketitle
+\begin{enumerate}
+\item \textbf{(10)} Сгенерируйте случайную симметричную матрицу $A$ размера $1000 \times 1000$:
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{label={lst:code_direct}}
+\lstset{basicstyle=\ttfamily}
+\begin{lstlisting}
+n = 1000
+a = np.random.normal(0, 1, (n, n))
+b = a + a.transpose()
+\end{lstlisting}
+Используя функцию \lstinline{numpy.linalg.eigvalsh}, найдите спектр матрицы $A$ и постройте гистограмму распределения собственных значений (\lstinline{plt.hist}).
+\item \textbf{(15)} Сгенерируйте случайную симметричную и положительно определенную матрицу $A$ размера $10 \times 10$. Найдите спектр этой матрицы с помощью функции \lstinline{numpy.linalg.eigvalsh}. Имплементируйте $\textrm{QR}$--алгоритм без сдвигов (используйте \lstinline{numpy.linalg.qr}) и найдите спектр матрицы с его помощью. Сколько итераций требуется, чтобы приблизить минимальное собственное значение с точностью $1\%$?
+\item \textbf{(15)} Рассмотрите матрицу 
+$$
+A=\begin{bmatrix}
+0 & 1\\
+0 & 0\\
+\end{bmatrix}.\quad
+$$
+Найдите спектр матрицы $A$. Пусть $\sigma_\epsilon$ --множество таких [комплексных] $z$, что $z$ является собственным значением матрицы $A+\delta A$ c некоторым $||\delta A||_2<\epsilon$. Изобразите $\sigma_{0.1}$ и $\sigma_{0.01}$ (используйте без доказательства эквивалентность утверждений i и iv из задачи 26.1 Trefethen, Bau).
+\item \textbf{(20)} Рассмотрите матрицу 
+$$
+A=\begin{bmatrix}
+3 & 1 & 0 & 0\\
+1 & 2 & 0 & 1\\
+0 & 0 & 1 & 1\\
+0 & 1 & 1 & 1
+\end{bmatrix}\quad
+$$
+Реализуйте следующие методы нахождения максимального собственного значения (стартуйте со случайного вектора):
+\begin{itemize}
+\item Степенная итерация
+\item Обратная итерация с $\mu = 3.5$
+\item Обратная итерация с $\mu = 3.7$
+\end{itemize}
+Сколько шагов $k$ требуется в каждом случае для того, чтобы получить настоящий собственный вектор $v$ с точностью $||v-v_k||_2 < 10^{-3}$?
+\item \textbf{(25)} Рассмотрите диагональную матрицу $D$ размера $n\times n$ и вектор--столбец $u$. Выберите $D$ и $u$ случайным образом (сгенерировав их элементы их стандартного нормального распределения) и найдите минимальное собственное значение и соответствующий собственный ему собственный вектор матрицы
+$$A = D + \frac{u u^T}{u^T u}.$$ Рассмотрите случаи $n=10^2$ и $n=10^5$.
+\item \textbf{(30)} Рассмотрите матрицу $A$ размера $32\times 32$, задаваемую следующей формулой:
+$$
+A_{ij} = -\delta_{i,j} + \delta_{i, j-1} + \delta_{i, j-2}.
+$$
+\begin{itemize}
+\item Найдите спектр матрицы $A$.
+\item Используя функцию \lstinline{scipy.linalg.expm}, постройте $||e^{At}||_2$ как функцию $t$ на интервале $0\le t \le 50$.
+\item Используя (без доказательства) эквивалентность утверждений i и iii из задачи 26.1 Trefethen, Bau, изобразите в комплексной плоскости множество $\sigma_\epsilon$ [см. определение в Задаче 3] для $\epsilon = 10^{-i},\quad i=1,..,5$.
+\end{itemize}
+\end{enumerate}
+\end{document}
