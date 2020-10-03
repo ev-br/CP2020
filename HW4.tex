@@ -26,10 +26,20 @@
 \begin{lstlisting}
 n = 1000
 a = np.random.normal(0, 1, (n, n))
-b = a + a.transpose()
+A = a + a.T
 \end{lstlisting}
 Используя функцию \lstinline{numpy.linalg.eigvalsh}, найдите спектр матрицы $A$ и постройте гистограмму распределения собственных значений (\lstinline{plt.hist}).
-\item \textbf{(15)} Сгенерируйте случайную симметричную и положительно определенную матрицу $A$ размера $10 \times 10$. Найдите спектр этой матрицы с помощью функции \lstinline{numpy.linalg.eigvalsh}. Имплементируйте $\textrm{QR}$--алгоритм без сдвигов (используйте \lstinline{numpy.linalg.qr}) и найдите спектр матрицы с его помощью. Сколько итераций требуется, чтобы приблизить минимальное собственное значение с точностью $1\%$?
+\item \textbf{(15)} Сгенерируйте случайную симметричную и положительно определенную матрицу $A$ размера $10 \times 10$. 
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{label={lst:code_direct}}
+\lstset{basicstyle=\ttfamily}
+\begin{lstlisting}
+n = 10
+a = np.random.normal(0, 1, (n, n))
+A = a @ a.T
+\end{lstlisting}
+Найдите спектр этой матрицы с помощью функции \lstinline{numpy.linalg.eigvalsh}. Имплементируйте $\textrm{QR}$--алгоритм без сдвигов (используйте \lstinline{numpy.linalg.qr}) и найдите спектр матрицы с его помощью. Сколько итераций требуется, чтобы приблизить минимальное собственное значение с точностью $1\%$?
 \item \textbf{(15)} Рассмотрите матрицу 
 $$
 A=\begin{bmatrix}
