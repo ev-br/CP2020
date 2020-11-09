@@ -1,0 +1,63 @@
+\documentclass[prb,papersize=a4paper,notitlepage]{revtex4-1}%
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{nicefrac}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{listings}
+\newcommand{\wm}[1]{\texttt{Mathematica}}
+\newcommand{\sympy}[1]{\texttt{sympy}}
+
+
+\begin{document}
+
+\title{Вычислительная физика, Осень 2020 ВШЭ. Задание 7.\footnote{Дополнительно указаны: (количество баллов за задачу)[имя задачи на nbgrader]}}
+\maketitle
+Скачайте \href{https://www.dropbox.com/s/txs1nmehh7aw71w/data.npz?dl=0}{файл}, содержащий данные, необходимые для выполнения этого задания и откройте его, используя \lstinline{numpy}.
+
+\begin{enumerate}
+\item \textbf{(10)} Вектора \lstinline{x1} и \lstinline{y1} дают значения некоторой функции $f(x)$. 
+Постройте:
+\begin{enumerate}
+\item Интерполяционный Лагранжев многочлен.
+\item Интерполяционный кубический сплайн (\lstinline{CubicSpline}).
+\item Монотонный кубический интерполянт (\lstinline{PchipInterpolator}).
+\end{enumerate}
+
+
+\item \textbf{(15)}
+Постройте полиномиальный интерполянт, проходящий через точки \lstinline{x = np.linspace(-1, 1, n)} и \lstinline{y = np.cos(n*x)}, двумя способами:
+\begin{enumerate}
+\item Используя функции \lstinline{np.polyfit} и \lstinline{np.polyval}.
+\item Используя явную формулу через многочлены Лагранжа.
+\end{enumerate}
+Сравните результаты, полученные этими способами и объясните результат (возьмите $n=16,\;32,\;64$).
+
+
+\item \textbf{(15)}
+Постройте интерполяцию функций
+$$
+y_1(x)=\sin(6x) + \sin(60 e^x),\; y_2(x)=\frac{1}{1+1000(x+0.5)^2}+\frac{1}{\sqrt{1+1000(x-0.5)^2}}
+$$
+на отрезке $[-1,1]$ полиномами Чебышева. Постройте зависимость ошибки приближения от количества узлов. Сколько узлов нужно удержать в каждом из этих случаев для получения достаточно точного приближения? 
+
+\item \textbf{(15)} Вектора \lstinline{x4} и \lstinline{y4} дают значения некоторой функции на равномерной сетке на отрезке $[-0.75, 0.75]$. Используя \lstinline{scipy.optimize.curve_fit}, постройте интерполяцию функции $y(x)$ функциями вида
+$$
+y_1(x)=p_0+p_1 x+p_2 x^2+p_3 x^3+p_4 x^4 + p_5 x^5,\; y_2(x)=\frac{p_0+p_1 x+p_2 x^2+p_3 x^3}{1+q_1 x+q_2 x^2}.
+$$
+Какая из этих формул лучше описывает $y(x)$ на заданном интервале? Постройте график экстраполяции $y(x)$ за пределы исходных данных. Можете ли вы угадать аналитическое выражение для $y(x)$?
+
+\item \textbf{(20)} Вектора \lstinline{x5} и \lstinline{y5} задают некоторую функцию на равномерной сетке на отрезке $[-1, 1]$. Составьте соответствующий интерполяционный многочлен и постройте его график. Ожидаемо, получившийся интерполянт демонстрирует явление Рунге. Теперь проделайте замену переменной $x\to s$ по формуле $x = g(s)$, где 
+$$
+g(s) = \frac{1}{53089}\left(40320 s + 6720 s^3 + 3024 s^5 + 1800 s^7 + 1225 s^9\right)
+$$
+ -- функция, приближённо отображающая равномерную сетку в сетку узлов Чебышева. В новой переменной $s$, составьте интерполяционный многочлен $P(s)$. Постройте график получившейся интерполяции исходной функции $P(s(x))$. Делает ли такая процедура явление Рунге менее выраженным?
+
+\end{enumerate} 
+\end{document}
