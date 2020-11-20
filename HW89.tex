@@ -1,0 +1,80 @@
+\documentclass[prb,papersize=a4paper,notitlepage]{revtex4-1}%
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{nicefrac}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{listings}
+\def\Xint#1{\mathchoice
+   {\XXint\displaystyle\textstyle{#1}}%
+   {\XXint\textstyle\scriptstyle{#1}}%
+   {\XXint\scriptstyle\scriptscriptstyle{#1}}%
+   {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+   \!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$}
+     \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
+\def\dashint{\Xint-}
+
+\newcommand{\wm}[1]{\texttt{Mathematica}}
+\newcommand{\sympy}[1]{\texttt{sympy}}
+
+
+\begin{document}
+
+\title{Вычислительная физика, Осень 2020 ВШЭ. Задание 8-9.\footnote{Дополнительно указаны: (количество баллов за задачу)[имя задачи на nbgrader]}}
+\maketitle
+Скачайте \href{https://www.dropbox.com/s/qutf98oh64ss8ev/data89.npz?dl=0}{файл}, содержащий данные, необходимые для выполнения этого задания и откройте его, используя \lstinline{numpy}.
+
+\begin{enumerate}
+
+\item \textbf{(10)} Вычислите определённый интеграл методом трапеций с вычитанием сингулярности
+$$
+I = \int_{0}^{1}\frac{e^x}{\sqrt{x(1-x)}}dx.
+$$
+Вам могут пригодиться значения следующих определенных интегралов:
+$$
+\int_0^1 \frac{1}{\sqrt{x (1-x)}} \, dx=\pi,\quad \int_0^1 \frac{x}{\sqrt{x (1-x)}} \, dx=\pi/2.
+$$
+
+\item \textbf{(15)} Рассмотрите функцию, отображающую вектор $\vec{x}$ длины $n$ в скаляр:
+$$
+f(\vec{x}|a) = \frac{1}{\exp(a_0+x_1 a_1 +... + x_n a_n)+1},
+$$
+параметризованную коэффициентами $a_0, a_1, ..., a_n$. В столбцах матрицы \lstinline{A2} содержится набор $m$ векторов $\vec{x}_1, ..., \vec{x}_m$, а в векторе $\lstinline{y2}$ -- набор $m$ чисел $y_1,...,y_m$. Найдите коэффициенты $a$ такие, что
+$$
+\sum_i (f(\vec{x}_i|a) - y_i)^2
+$$
+минимально. Для этого используйте \href{https://en.wikipedia.org/wiki/Gradient_descent}{метод градиентного спуска} с фиксированным $\gamma$, в качестве начального приближения выбирая случайный вектор $\vec{a}$. Вычислите градиент двумя способами: разностным приближением и  используя пакет \lstinline{autograd}.
+
+\item \textbf{(15)} Вычислите определённый интеграл
+$$
+I = \int_{0}^{\infty}\frac{\sin (x) \cos (\cos (x))}{x}dx
+$$
+с относительной точностью $10^{-6}$. Для упрощения задачи Вы можете использовать \lstinline{scipy.integrate.quad}.
+
+\item \textbf{(15)} Вычислите следующий интеграл по $n$--мерному вектору $\vec{x}$ (в бесконечных пределах) методом Монте-Карло:
+$$
+\int \Pi_{i=1}^{n} dx_i \frac{\exp\left(-\vec{x}^T A \vec{x}\right)}{1+x_1^2+...+x_n^2},
+$$
+где матрица $A$ содержится в  \lstinline{A4}.
+
+\item \textbf{(25)} Рассмотрите интегральное уравнение на функцию $f(s)$, где $-1 \le s \le 1$:
+$$
+\frac{1}{\pi}\dashint_{-1}^{1}\frac{dt}{\sqrt{1-t^2}}\frac{y(t)}{t-s} = \cos s
+$$
+(здесь интеграл понимается в смысле главного значения), с дополнительным условием
+$$
+\frac{1}{\pi}\dashint_{-1}^{1}\frac{dt}{\sqrt{1-t^2}}y(t)=0.
+$$
+Решите это уравнение, используя квадратуру Чебышева-Гаусса. Постройте график решения как непрерывную функцию на заданном отрезке. Возможно, Вам понадобится следующее равенство:
+$$
+\dashint_{-1}^1 \frac{1}{\sqrt{1-t^2} (s-t)} \, dt = 0.
+$$
+\end{enumerate} 
+\end{document}
